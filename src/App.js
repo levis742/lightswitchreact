@@ -1,15 +1,11 @@
-import Bulb from './components/lightswitch'
+import Switch from './components/switch'
 import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [address, setAddress] = useState("100 Emerson Lane")
-  function masterSwitch() {
-    let newAddress= "100 Emerson Lane"
-    if (address.includes("100")) {
-      newAddress= "200 Jonestown Massacre Lane"
-    }
-    setAddress(newAddress)
+  const [masterIsOn, setMasterIsOn] = useState(false)
+  function masterSwitch(){
+    setMasterIsOn(!masterIsOn)
   }
   
   return (
@@ -19,13 +15,13 @@ function App() {
       </button>
       <div class="columns">
         <div class="column">
-          <Bulb mood="grouchy" address={address} />
+          <Switch masterIsOn={masterIsOn} />
         </div>
         <div class="column">
-          <Bulb mood="sad" address={address} />
+          <Switch masterIsOn={masterIsOn} />
         </div>
         <div class="column">
-          <Bulb mood="excited" address={address} />
+          <Switch masterIsOn={masterIsOn} />
         </div>
       </div>
     </div>
